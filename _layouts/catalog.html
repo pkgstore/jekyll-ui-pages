@@ -2,6 +2,8 @@
 layout: default
 ---
 
+<h1>{{ title }}</h1>
+
 {% assign dir = page.dir | remove: '/' %}
 {% assign group = site.github.public_repositories | where: 'topics', dir %}
 
