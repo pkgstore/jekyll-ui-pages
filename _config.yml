@@ -7,7 +7,7 @@ description: ""
 theme: ui-pages
 
 sass:
-  style: compressed
+  style: :compressed
 
 plugins:
   - jekyll-seo-tag
