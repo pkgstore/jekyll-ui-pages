@@ -1,0 +1,15 @@
+title: ""
+author:
+  name: ""
+  email: ""
+description: ""
+
+theme: ui-pages
+
+sass:
+  style: compressed
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jemoji

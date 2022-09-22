@@ -1,0 +1,25 @@
+html {
+  font-smooth: always;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+
+  .node-body {
+    font-family: 'PT Serif', 'Times New Roman', 'Times', serif;
+
+    @for $i from 1 through 6 {
+      h#{$i} {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 400;
+      }
+    }
+
+    pre,
+    code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+  }
+}
