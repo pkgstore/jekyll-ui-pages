@@ -35,21 +35,21 @@ layout: default
           </div>
           <div class="card-footer text-muted">
             <ul class="list-inline m-0">
-              {% if i.html_url %}
+              {% if i.html_url and i.html_url != '' %}
                 <li class="list-inline-item">
                   <a class="btn btn-light btn-sm text-muted" href="{{ i.html_url }}" target="_blank" role="button">
                     <i class="fa-brands fa-github fa-fw"></i>
                   </a>
                 </li>
               {% endif %}
-              {% if i.homepage %}
+              {% if i.homepage and i.homepage != '' %}
                 <li class="list-inline-item">
                   <a class="btn btn-light btn-sm text-muted" href="{{ i.homepage }}" target="_blank" role="button">
                     <i class="fa-solid fa-link fa-fw"></i>
                   </a>
                 </li>
               {% endif %}
-              {% if i.license.key %}
+              {% if i.license.key and i.license.key != '' %}
                 <li class="list-inline-item">
                   <a class="btn btn-light btn-sm text-muted" href="https://choosealicense.com/licenses/{{ i.license.key }}/" target="_blank" role="button">
                     <i class="fa-solid fa-copyright fa-fw me-1"></i>
