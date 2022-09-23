@@ -1,1 +1,7 @@
-<img title="{{ include.title }}" class="img-fluid" src="{{ include.file }}" alt="{{ include.alt }}" loading="lazy"/>
+{% if include.url and include.url != '' %}
+  <a href="{{ include.url }}">
+    <img title="{{ include.title }}" class="img-fluid" src="{{ include.file }}" alt="{{ include.alt }}" loading="lazy"/>
+  </a>
+{% else %}
+  <img title="{{ include.title }}" class="img-fluid" src="{{ include.file }}" alt="{{ include.alt }}" loading="lazy"/>
+{% endif %}
