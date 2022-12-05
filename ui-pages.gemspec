@@ -3,11 +3,11 @@
 Gem::Specification.new do |s|
   s.name          = "ui-pages"
   s.version       = "0.0.1"
-  s.authors       = ["z17 Development"]
-  s.email         = ["mail@z17.dev"]
+  s.authors       = ["v77 Development"]
+  s.email         = ["mail@v77.dev"]
 
   s.summary       = ""
-  s.homepage      = "https://z17.dev/"
+  s.homepage      = "https://v77.dev/"
   s.license       = "MIT"
 
   s.metadata["plugin_type"] = "theme"

@@ -49,7 +49,7 @@ layout: default
                   </a>
                 </li>
               {% endif %}
-              {% if i.license.key and i.license.key != '' %}
+              {% if i.license.key and i.license.key != '' and i.license.key != 'other' %}
                 <li class="list-inline-item">
                   <a class="btn btn-light btn-sm text-muted" href="https://choosealicense.com/licenses/{{ i.license.key }}/" target="_blank" role="button">
                     <i class="fa-solid fa-copyright fa-fw me-1"></i>
