@@ -15,7 +15,7 @@ layout: default
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           {% for g in groups %}
-            <a class="nav-link" href="#{{ g.name }}">{{ g.name }}</a>
+            <a class="nav-link" href="#group-{{ g.name }}">{{ g.name }}</a>
           {% endfor %}
         </div>
       </div>
@@ -33,7 +33,7 @@ layout: default
   {% for g in groups %}
     <div class="section py-3 py-md-4">
       <h2 class="text-center text-uppercase border-bottom pb-1 mb-3">
-        <a id="#{{ g.name }}">{{ g.name }}</a>
+        <a id="group-{{ g.name }}">{{ g.name }}</a>
       </h2>
       <div class="row row-cols-1 row-cols-lg-2 g-3">
         {% for r in g.items %}
