@@ -26,12 +26,12 @@ layout: default
 <main class="container">
   <div class="section py-3 py-md-4">
     <div class="d-flex align-items-start">
-      <div class="nav flex-column nav-pills flex-sm-row me-3" role="tablist" aria-orientation="vertical">
-        <button class="flex-sm-fill nav-link active" id="home-tab" data-bs-toggle="pill" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+      <div class="nav flex-column nav-pills me-3" role="tablist" aria-orientation="vertical">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="pill" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
           <i class="fas fa-home fa-fw"></i>
         </button>
         {% for g in groups %}
-          <button class="flex-sm-fill nav-link text-uppercase" id="{{ g.name }}-tab" data-bs-toggle="pill" data-bs-target="#{{ g.name }}-tab-pane" type="button" role="tab" aria-controls="{{ g.name }}-tab-pane" aria-selected="false">{{ g.name }}</button>
+          <button class="nav-link text-uppercase" id="{{ g.name }}-tab" data-bs-toggle="pill" data-bs-target="#{{ g.name }}-tab-pane" type="button" role="tab" aria-controls="{{ g.name }}-tab-pane" aria-selected="false">{{ g.name }}</button>
         {% endfor %}
       </div>
       <div class="tab-content">
