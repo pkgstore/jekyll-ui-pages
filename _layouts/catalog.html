@@ -15,14 +15,14 @@ layout: default
   </ul>
 
   <div class="row row-cols-1 row-cols-lg-2 g-3">
-    {% for r in repos %}
+    {% for g in groups.items %}
 
-      {% assign group = r.name | split: '-' | first %}
+      {% assign group = g.name | split: '-' | first %}
 
       <div class="col col-{{ group }}">
         <article class="card h-100 card-{{ group }}">
           <h5 class="card-header">
-            <a href="{{ r.html_url }}" target="_blank">{{ r.name }}</a>
+            <a href="{{ g.html_url }}" target="_blank">{{ g.name }}</a>
           </h5>
           <div class="row g-0 h-100">
             <div class="col-4">
