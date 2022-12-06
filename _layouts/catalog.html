@@ -5,8 +5,8 @@ layout: default
 <div class="section py-3 py-md-4">
   <h1 class="text-center text-uppercase border-bottom pb-1 mb-3">{{ page.title }}</h1>
 
-  {% assign repos = site.github.public_repositories | where_exp: "i", "r.name contains '-'" %}
-  {% assign groups = repos | group_by_exp: "i", "r.name | split: '-' | first" %}
+  {% assign repos = site.github.public_repositories | where_exp: "i", "i.name contains '-'" %}
+  {% assign groups = repos | group_by_exp: "i", "i.name | split: '-' | first" %}
 
   <ul class="list-group">
     {% for g in groups %}
