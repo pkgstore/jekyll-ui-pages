@@ -3,6 +3,10 @@ layout: default
 ---
 
 <div class="section py-3 py-md-4">
+  <div class="node-body">{{ content }}</div>
+</div>
+
+<div class="section py-3 py-md-4">
   <h1 class="text-center text-uppercase border-bottom pb-1 mb-3">{{ page.title }}</h1>
 
   {% assign repos = site.github.public_repositories | where_exp: "i", "i.name contains '-'" %}
@@ -15,7 +19,7 @@ layout: default
   </ul>
 
   {% for g in groups %}
-    {{ g.name }}
+    <h2 class="text-center text-uppercase border-bottom pb-1 mb-3">{{ g.name }}</h2>
     <div class="row row-cols-1 row-cols-lg-2 g-3">
       {% for r in g.items %}
         <div class="col">
