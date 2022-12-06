@@ -15,18 +15,21 @@ layout: default
   </ul>
 
   <div class="row row-cols-1 row-cols-lg-2 g-3">
-    {% for g in groups.items %}
+    {% for g in groups %}
 
-      {% assign group = g.name | split: '-' | first %}
+      {{ g.name }}
 
-      <div class="col col-{{ group }}">
-        <article class="card h-100 card-{{ group }}">
-          <h5 class="card-header">
-            <a href="{{ g.html_url }}" target="_blank">{{ g.name }}</a>
-          </h5>
-        </article>
-      </div>
+      {% for r in g.items %}
 
+        <div class="col">
+          <article class="card h-100">
+            <h5 class="card-header">
+              <a href="{{ r.html_url }}" target="_blank">{{ r.name }}</a>
+            </h5>
+          </article>
+        </div>
+
+      {% endfor %}
     {% endfor %}
   </div>
 </div>
