@@ -6,7 +6,7 @@ layout: default
 {% assign groups = repos | group_by_exp: "i", "i.name | split: '-' | first" %}
 
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light border-bottom shadow-sm text-lg-center">
+  <nav class="navbar navbar-expand-lg navbar-light border-bottom shadow-sm text-lg-center">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">{{ page.title }}</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +23,7 @@ layout: default
   </nav>
 </header>
 
-<main class="container pt-5">
+<main class="container">
   {% if content and content != '' %}
     <div class="section py-3 py-md-4">
       <div class="node-body">{{ content }}</div>
