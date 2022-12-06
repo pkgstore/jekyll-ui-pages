@@ -14,13 +14,10 @@ layout: default
     {% endfor %}
   </ul>
 
-  <div class="row row-cols-1 row-cols-lg-2 g-3">
-    {% for g in groups %}
-
+  {% for g in groups %}
+    <div class="row row-cols-1 row-cols-lg-2 g-3">
       {{ g.name }}
-
       {% for r in g.items %}
-
         <div class="col">
           <article class="card h-100">
             <h5 class="card-header">
@@ -28,8 +25,7 @@ layout: default
             </h5>
           </article>
         </div>
-
       {% endfor %}
-    {% endfor %}
-  </div>
+    </div>
+  {% endfor %}
 </div>
