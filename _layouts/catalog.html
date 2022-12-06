@@ -5,8 +5,8 @@ layout: default
 <div class="section py-3 py-md-4">
   <h1 class="text-center text-uppercase border-bottom pb-1 mb-3">{{ page.title }}</h1>
 
-  {% assign repos = site.github.public_repositories | where_exp: "i", "i.name contains '-'" %}
-  {% assign groups = repos | group_by_exp: "i", "i.name | split: '-' | first" %}
+  {% assign repos = site.github.public_repositories | where_exp: "i", "r.name contains '-'" %}
+  {% assign groups = repos | group_by_exp: "i", "r.name | split: '-' | first" %}
 
   <ul class="list-group">
     {% for g in groups %}
@@ -15,69 +15,69 @@ layout: default
   </ul>
 
   <div class="row row-cols-1 row-cols-lg-2 g-3">
-    {% for i in repos %}
+    {% for r in repos %}
 
-      {% assign group = i.name | split: '-' | first %}
+      {% assign group = r.name | split: '-' | first %}
 
       <div class="col col-{{ group }}">
         <article class="card h-100 card-{{ group }}">
           <h5 class="card-header">
-            <a href="{{ i.html_url }}" target="_blank">{{ i.name }}</a>
+            <a href="{{ r.html_url }}" target="_blank">{{ r.name }}</a>
           </h5>
           <div class="row g-0 h-100">
             <div class="col-4">
               <div class="node-cover text-center p-3">
-                <a href="{{ i.html_url }}" target="_blank">
-                  <img src="https://raw.githubusercontent.com/{{ i.full_name }}/{{ i.default_branch }}/.github/logo.svg" class="img-fluid rounded" alt="" loading="lazy"/>
+                <a href="{{ r.html_url }}" target="_blank">
+                  <img src="https://raw.githubusercontent.com/{{ r.full_name }}/{{ r.default_branch }}/.github/logo.svg" class="img-fluid rounded" alt="" loading="lazy"/>
                 </a>
               </div>
             </div>
             <div class="col-8">
               <div class="card-body">
                 <div class="node-body">
-                  <p class="card-text">{{ i.description }}</p>
+                  <p class="card-text">{{ r.description }}</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="card-footer text-muted">
             <ul class="list-inline m-0">
-              {% if i.homepage and i.homepage != '' %}
+              {% if r.homepage and r.homepage != '' %}
                 <li class="list-inline-item">
-                  <a class="btn btn-light btn-sm text-muted" href="{{ i.homepage }}" target="_blank" role="button">
+                  <a class="btn btn-light btn-sm text-muted" href="{{ r.homepage }}" target="_blank" role="button">
                     <i class="fa-solid fa-link fa-fw"></i>
                   </a>
                 </li>
               {% endif %}
-              {% if i.license.key and i.license.key != '' and i.license.key != 'other' %}
+              {% if r.license.key and r.license.key != '' and r.license.key != 'other' %}
                 <li class="list-inline-item">
-                  <a class="btn btn-light btn-sm text-muted" href="https://choosealicense.com/licenses/{{ i.license.key }}/" target="_blank" role="button">
+                  <a class="btn btn-light btn-sm text-muted" href="https://choosealicense.com/licenses/{{ r.license.key }}/" target="_blank" role="button">
                     <i class="fa-solid fa-copyright fa-fw me-1"></i>
-                    {{ i.license.spdx_id }}
+                    {{ r.license.spdx_id }}
                   </a>
                 </li>
               {% endif %}
-              {% if i.watchers_count %}
+              {% if r.watchers_count %}
                 <li class="list-inline-item">
-                  <a class="btn btn-light btn-sm text-muted" href="{{ i.html_url }}/watchers" target="_blank" role="button">
+                  <a class="btn btn-light btn-sm text-muted" href="{{ r.html_url }}/watchers" target="_blank" role="button">
                     <i class="fa-solid fa-eye fa-fw me-1"></i>
-                    {{ i.watchers_count }}
+                    {{ r.watchers_count }}
                   </a>
                 </li>
               {% endif %}
-              {% if i.stargazers_count %}
+              {% if r.stargazers_count %}
                 <li class="list-inline-item">
-                  <a class="btn btn-light btn-sm text-muted" href="{{ i.html_url }}/stargazers" target="_blank" role="button">
+                  <a class="btn btn-light btn-sm text-muted" href="{{ r.html_url }}/stargazers" target="_blank" role="button">
                     <i class="fa-solid fa-star fa-fw me-1"></i>
-                    {{ i.stargazers_count }}
+                    {{ r.stargazers_count }}
                   </a>
                 </li>
               {% endif %}
-              {% if i.forks_count %}
+              {% if r.forks_count %}
                 <li class="list-inline-item">
-                  <a class="btn btn-light btn-sm text-muted" href="{{ i.html_url }}/network/members" target="_blank" role="button">
+                  <a class="btn btn-light btn-sm text-muted" href="{{ r.html_url }}/network/members" target="_blank" role="button">
                     <i class="fa-solid fa-code-fork fa-fw me-1"></i>
-                    {{ i.forks_count }}
+                    {{ r.forks_count }}
                   </a>
                 </li>
               {% endif %}
