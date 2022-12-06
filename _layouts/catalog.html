@@ -5,17 +5,15 @@ layout: default
 <div class="section py-3 py-md-4">
   <h1 class="text-center text-uppercase border-bottom pb-1 mb-3">{{ page.title }}</h1>
 
-  {% assign dir = page.dir | remove: '/' %}
-  {% assign group = site.github.public_repositories | where: 'topics', dir %}
+  {% assign repos = site.github.public_repositories %}
 
   <div class="row row-cols-1 row-cols-lg-2 g-3">
-    {% for i in group %}
-      {% assign name = i.name | remove: dir | remove_first: '-' %}
+    {% for i in repos %}
 
       <div class="col">
         <article class="card h-100">
           <h5 class="card-header">
-            <a href="{{ i.html_url }}">{{ name }}</a>
+            <a href="{{ i.html_url }}">{{ i.name }}</a>
           </h5>
           <div class="row g-0 h-100">
             <div class="col-4">
