@@ -6,6 +6,13 @@ layout: default
   <h1 class="text-center text-uppercase border-bottom pb-1 mb-3">{{ page.title }}</h1>
 
   {% assign repos = site.github.public_repositories | where_exp: "i", "i.name contains '-'" %}
+  {% assign groups = repos | group_by_exp: "i", "i.name | split: '-' | first" %}
+
+  <ul class="list-group">
+    {% for g in groups %}
+      <li class="list-group-item"><a href="{{ g.name }}">{{ g.name }}</a></li>
+    {% endfor %}
+  </ul>
 
   <div class="row row-cols-1 row-cols-lg-2 g-3">
     {% for i in repos %}
