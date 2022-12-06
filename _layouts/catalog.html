@@ -31,7 +31,7 @@ layout: default
           <i class="fas fa-home fa-fw"></i>
         </button>
         {% for g in groups %}
-          <button class="nav-link" id="{{ g.name }}-tab" data-bs-toggle="pill" data-bs-target="#{{ g.name }}-tab-pane" type="button" role="tab" aria-controls="{{ g.name }}-tab-pane" aria-selected="false">{{ g.name }}</button>
+          <button class="nav-link text-uppercase" id="{{ g.name }}-tab" data-bs-toggle="pill" data-bs-target="#{{ g.name }}-tab-pane" type="button" role="tab" aria-controls="{{ g.name }}-tab-pane" aria-selected="false">{{ g.name }}</button>
         {% endfor %}
       </div>
       <div class="tab-content">
