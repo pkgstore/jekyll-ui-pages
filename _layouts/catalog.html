@@ -2,23 +2,30 @@
 layout: default
 ---
 
-<div class="section py-3 py-md-4">
-  <h1 class="text-center text-uppercase border-bottom pb-1 mb-3">{{ page.title }}</h1>
-  {% if content and content != '' %}
-    <div class="node-body">{{ content }}</div>
-  {% endif %}
-</div>
-
 {% assign repos = site.github.public_repositories | where_exp: "i", "i.name contains '-'" %}
 {% assign groups = repos | group_by_exp: "i", "i.name | split: '-' | first" %}
 
-<div class="section py-3 py-md-4">
-  <ul class="list-group">
-    {% for g in groups %}
-      <li class="list-group-item"><a href="{{ g.name }}">{{ g.name }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">{{ page.title }}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        {% for g in groups %}
+          <a class="nav-link" href="#{{ g.name }}">{{ g.name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</nav>
+
+{% if content and content != '' %}
+  <div class="section py-3 py-md-4">
+    <div class="node-body">{{ content }}</div>
+  </div>
+{% endif %}
 
 {% for g in groups %}
   <div class="section py-3 py-md-4">
