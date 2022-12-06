@@ -32,7 +32,7 @@ layout: default
         </button>
       </li>
       {% for g in groups %}
-        <li class="nav-item" role="presentation">
+        <li class="nav-item text-uppercase" role="presentation">
           <button class="nav-link" id="{{ g.name }}-tab" data-bs-toggle="tab" data-bs-target="#{{ g.name }}-tab-pane" type="button" role="tab" aria-controls="{{ g.name }}-tab-pane" aria-selected="false">{{ g.name }}</button>
         </li>
       {% endfor %}
