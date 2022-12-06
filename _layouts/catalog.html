@@ -15,8 +15,8 @@ layout: default
   </ul>
 
   {% for g in groups %}
+    {{ g.name }}
     <div class="row row-cols-1 row-cols-lg-2 g-3">
-      {{ g.name }}
       {% for r in g.items %}
         <div class="col">
           <article class="card h-100">
