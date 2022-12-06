@@ -38,7 +38,7 @@ layout: default
       {% endfor %}
     </ul>
     <div class="tab-content">
-      <div class="tab-pane" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">{{ content }}</div>
+      <div class="tab-pane show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">{{ content }}</div>
       {% for g in groups %}
         <div class="tab-pane" id="{{ g.name }}-tab-pane" role="tabpanel" aria-labelledby="{{ g.name }}-tab" tabindex="0">
           <div class="row row-cols-1 row-cols-lg-2 g-3">
