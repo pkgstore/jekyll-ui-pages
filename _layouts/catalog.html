@@ -10,8 +10,10 @@ layout: default
   <div class="row row-cols-1 row-cols-lg-2 g-3">
     {% for i in repos %}
 
-      <div class="col">
-        <article class="card h-100">
+      {% assign group = i.name | split: '-' | first %}
+
+      <div class="col col-{{ group }}">
+        <article class="card h-100 card-{{ group }}">
           <h5 class="card-header">
             <a href="{{ i.html_url }}" target="_blank">{{ i.name }}</a>
           </h5>
