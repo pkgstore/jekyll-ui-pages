@@ -125,9 +125,13 @@ layout: default
           {% for u in users %}
             <div class="col">
               <div class="card">
-                <img src="{{ u.avatar_url }}" class="card-img-top" alt="">
+                <a href="{{ u.html_url }}" target="_blank">
+                  <img src="{{ u.avatar_url }}" class="card-img-top" alt="" loading="lazy"/>
+                </a>
                 <div class="card-body">
-                  <h5 class="card-title">{{ u.login }}</h5>
+                  <h5 class="card-title">
+                    <a href="{{ u.html_url }}" target="_blank">{{ u.login }}</a>
+                  </h5>
                 </div>
               </div>
             </div>
@@ -135,6 +139,5 @@ layout: default
         </div>
       </div>
     </div>
-
   </div>
 </div>
