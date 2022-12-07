@@ -113,10 +113,10 @@ layout: default
   </div>
 </main>
 <footer class="mt-auto">
-  <div class="section py-4">
+  <div class="section py-4 bg-light">
     <div class="container">
       <div class="row text-center text-muted small">
-        example
+        {{ site.github.owner | jsonify }} &copy; {{ 'now' | date: "%Y" }}
       </div>
     </div>
   </div>
