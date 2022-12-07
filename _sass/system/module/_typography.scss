@@ -1,0 +1,29 @@
+body {
+  @for $i from 1 through 6 {
+    h#{$i} {
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+  }
+}
+
+body {
+  .node-body {
+    font-family: 'PT Serif', 'Times New Roman', 'Times', serif;
+
+    pre,
+    code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    pre {
+      background-color: var(--bs-gray-100);
+      border-radius: var(--bs-border-radius-sm);
+      max-height: 40rem;
+
+      > code {
+        display: block;
+        padding: 1rem;
+      }
+    }
+  }
+}
