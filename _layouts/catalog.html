@@ -119,7 +119,9 @@ layout: default
           </div>
         </div>
       </div>
-      <div class="tab-pane" id="main-users-tab-pane" role="tabpanel" aria-labelledby="main-users-tab" tabindex="0">users</div>
+      <div class="tab-pane" id="main-users-tab-pane" role="tabpanel" aria-labelledby="main-users-tab" tabindex="0">
+        {{ site.github.organization_members | jsonify }}
+      </div>
     </div>
 
   </div>
