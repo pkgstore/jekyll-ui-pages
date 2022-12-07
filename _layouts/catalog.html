@@ -13,11 +13,7 @@ layout: default
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navTopBar">
-        <div class="navbar-nav">
-          {% for g in groups %}
-            <a class="nav-link" href="#group-{{ g.name }}">{{ g.name }}</a>
-          {% endfor %}
-        </div>
+        <div class="navbar-nav"></div>
       </div>
     </div>
   </nav>
@@ -25,8 +21,8 @@ layout: default
 
 <main class="container">
   <div class="section py-3 py-md-4">
-    <div class="d-flex flex-column flex-lg-row align-items-start">
-      <div class="nav nav-pills flex-lg-column me-3" role="tablist" aria-orientation="vertical">
+    <div class="d-flex flex-column align-items-start flex-lg-row">
+      <div class="nav nav-pills mb-3 flex-lg-column me-lg-3" role="tablist" aria-orientation="vertical">
         <button class="nav-link active" id="home-tab" data-bs-toggle="pill" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
           <i class="fas fa-home fa-fw"></i>
         </button>
