@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |s|
-  s.name          = "ui-pages"
+  s.name          = "ui-catalog"
   s.version       = "0.0.1"
   s.authors       = ["v77 Development"]
   s.email         = ["mail@v77.dev"]

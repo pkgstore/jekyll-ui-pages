@@ -1,2 +1,2 @@
-# Jekyll UI Pages
+# Jekyll UI Catalog
 
