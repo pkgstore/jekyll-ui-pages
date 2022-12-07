@@ -4,6 +4,7 @@ layout: default
 
 {% assign repos = site.github.public_repositories | where_exp: "i", "i.name contains '-'" %}
 {% assign groups = repos | group_by_exp: "i", "i.name | split: '-' | first" %}
+{% assign users = site.github.organization_members %}
 
 <div class="section py-3 py-md-4">
   <div class="container">
@@ -120,7 +121,18 @@ layout: default
         </div>
       </div>
       <div class="tab-pane" id="main-users-tab-pane" role="tabpanel" aria-labelledby="main-users-tab" tabindex="0">
-        {{ site.github.organization_members | jsonify }}
+        <div class="row row-cols-1 row-cols-lg-2 g-3">
+          {% for u in users %}
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                <img src="{{ u.avatar_url }}" class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-title">{{ u.login }}</h5>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
 
