@@ -5,6 +5,28 @@ layout: default
 {% assign repos = site.github.public_repositories | where_exp: "i", "i.name contains '-'" %}
 {% assign groups = repos | group_by_exp: "i", "i.name | split: '-' | first" %}
 
+{% assign owner = '' %}
+{% if site.github.owner.name and site.github.owner.name != '' %}
+  {% assign owner = site.github.owner.name %}
+{% else %}
+  {% assign owner = site.github.owner.login %}
+{% endif %}
+
+{% assign description = '' %}
+{% if site.github.owner.description and site.github.owner.description != '' %}
+  {% assign description = site.github.owner.description %}
+{% endif %}
+
+{% assign email = '' %}
+{% if site.github.owner.email and site.github.owner.email != '' %}
+  {% assign email = site.github.owner.email %}
+{% endif %}
+
+{% assign blog = '' %}
+{% if site.github.owner.blog and site.github.owner.blog != '' %}
+  {% assign blog = site.github.owner.blog %}
+{% endif %}
+
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm text-lg-center">
     <div class="container-fluid">
@@ -32,7 +54,9 @@ layout: default
           {% endfor %}
         </div>
         <div class="tab-content">
-          <div class="tab-pane show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">{{ content }}</div>
+          <div class="tab-pane show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+            <div class="node-body">{{ content }}</div>
+          </div>
           {% for g in groups %}
             <div class="tab-pane" id="{{ g.name }}-tab-pane" role="tabpanel" aria-labelledby="{{ g.name }}-tab" tabindex="0">
               <div class="row row-cols-1 row-cols-lg-2 g-3">
@@ -112,11 +136,29 @@ layout: default
     </div>
   </div>
 </main>
+
 <footer class="mt-auto">
   <div class="section py-4 bg-light">
     <div class="container">
       <div class="row text-center text-muted small">
-        {{ site.github.owner | jsonify }} &copy; {{ 'now' | date: "%Y" }}
+        <div class="col-lg text-lg-start">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <div>{{ owner }} &copy; {{ 'now' | date: "%Y" }}</div>
+              <div>{{ description }}</div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg text-lg-end">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <a title="{{ owner }}" href="{{ blog }}" target="_blank" rel="noopener nofollow"><i class="fas fa-globe fa-fw"></i></a>
+            </li>
+            <li class="list-inline-item">&bull;</li>
+            <li class="list-inline-item">
+              <a title="{{ email }}" href="mailto:{{ email }}"><i class="far fa-envelope fa-fw"></i></a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
