@@ -2,6 +2,28 @@
 layout: compress
 ---
 
+{% assign owner = '' %}
+{% if site.github.owner.name and site.github.owner.name != '' %}
+  {% assign owner = site.github.owner.name %}
+{% else %}
+  {% assign owner = site.github.owner.login %}
+{% endif %}
+
+{% assign description = '' %}
+{% if site.github.owner.description and site.github.owner.description != '' %}
+  {% assign description = site.github.owner.description %}
+{% endif %}
+
+{% assign email = '' %}
+{% if site.github.owner.email and site.github.owner.email != '' %}
+  {% assign email = site.github.owner.email %}
+{% endif %}
+
+{% assign blog = '' %}
+{% if site.github.owner.blog and site.github.owner.blog != '' %}
+  {% assign blog = site.github.owner.blog %}
+{% endif %}
+
 <!doctype html>
 <html class="h-100" lang="{{ page.lang | default: site.lang | default: "en-US" }}">
 <head>
@@ -18,7 +40,46 @@ layout: compress
   <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}"/>
 </head>
 <body class="d-flex flex-column h-100">
-{{ content }}
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm text-lg-center">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ site.url }}">{{ site.name }}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navTopBar" aria-controls="navTopBar" aria-expanded="false" aria-label="">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navTopBar">
+        <div class="navbar-nav"></div>
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="flex-shrink-0">{{ content }}</main>
+<footer class="mt-auto">
+  <div class="section py-4 bg-light">
+    <div class="container">
+      <div class="row text-center text-muted small">
+        <div class="col-lg text-lg-start">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <div>{{ owner }} &copy; {{ 'now' | date: "%Y" }}</div>
+              <div>{{ description }}</div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg text-lg-end">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <a title="{{ owner }}" href="{{ blog }}" target="_blank" rel="noopener nofollow"><i class="fas fa-globe fa-fw"></i></a>
+            </li>
+            <li class="list-inline-item">&bull;</li>
+            <li class="list-inline-item">
+              <a title="{{ email }}" href="mailto:{{ email }}"><i class="far fa-envelope fa-fw"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.min.js"></script>
 </body>

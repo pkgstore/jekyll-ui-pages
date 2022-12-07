@@ -5,161 +5,96 @@ layout: default
 {% assign repos = site.github.public_repositories | where_exp: "i", "i.name contains '-'" %}
 {% assign groups = repos | group_by_exp: "i", "i.name | split: '-' | first" %}
 
-{% assign owner = '' %}
-{% if site.github.owner.name and site.github.owner.name != '' %}
-  {% assign owner = site.github.owner.name %}
-{% else %}
-  {% assign owner = site.github.owner.login %}
-{% endif %}
-
-{% assign description = '' %}
-{% if site.github.owner.description and site.github.owner.description != '' %}
-  {% assign description = site.github.owner.description %}
-{% endif %}
-
-{% assign email = '' %}
-{% if site.github.owner.email and site.github.owner.email != '' %}
-  {% assign email = site.github.owner.email %}
-{% endif %}
-
-{% assign blog = '' %}
-{% if site.github.owner.blog and site.github.owner.blog != '' %}
-  {% assign blog = site.github.owner.blog %}
-{% endif %}
-
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm text-lg-center">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">{{ page.title }}</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navTopBar" aria-controls="navTopBar" aria-expanded="false" aria-label="">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navTopBar">
-        <div class="navbar-nav"></div>
+<div class="section py-3 py-md-4">
+  <div class="container">
+    <div class="d-flex flex-column flex-lg-row">
+      <div class="nav nav-pills flex-column mb-3 me-lg-3" role="tablist" aria-orientation="vertical">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="pill" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+          <i class="fas fa-home fa-fw"></i>
+        </button>
+        {% for g in groups %}
+          <button class="nav-link text-uppercase" id="{{ g.name }}-tab" data-bs-toggle="pill" data-bs-target="#{{ g.name }}-tab-pane" type="button" role="tab" aria-controls="{{ g.name }}-tab-pane" aria-selected="false">{{ g.name }}</button>
+        {% endfor %}
       </div>
-    </div>
-  </nav>
-</header>
-
-<main class="flex-shrink-0">
-  <div class="section py-3 py-md-4">
-    <div class="container">
-      <div class="d-flex flex-column flex-lg-row">
-        <div class="nav nav-pills flex-column mb-3 me-lg-3" role="tablist" aria-orientation="vertical">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="pill" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
-            <i class="fas fa-home fa-fw"></i>
-          </button>
-          {% for g in groups %}
-            <button class="nav-link text-uppercase" id="{{ g.name }}-tab" data-bs-toggle="pill" data-bs-target="#{{ g.name }}-tab-pane" type="button" role="tab" aria-controls="{{ g.name }}-tab-pane" aria-selected="false">{{ g.name }}</button>
-          {% endfor %}
+      <div class="tab-content">
+        <div class="tab-pane show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+          <div class="node-body">{{ content }}</div>
         </div>
-        <div class="tab-content">
-          <div class="tab-pane show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-            <div class="node-body">{{ content }}</div>
-          </div>
-          {% for g in groups %}
-            <div class="tab-pane" id="{{ g.name }}-tab-pane" role="tabpanel" aria-labelledby="{{ g.name }}-tab" tabindex="0">
-              <div class="row row-cols-1 row-cols-lg-2 g-3">
-                {% for r in g.items %}
-                  <div class="col">
-                    <article class="card h-100">
-                      <h5 class="card-header">
-                        <a href="{{ r.html_url }}" target="_blank">{{ r.name }}</a>
-                      </h5>
-                      <div class="row g-0 h-100">
-                        <div class="col-4">
-                          <div class="node-cover text-center p-3">
-                            <a href="{{ r.html_url }}" target="_blank">
-                              <img src="https://raw.githubusercontent.com/{{ r.full_name }}/{{ r.default_branch }}/.github/logo.svg" class="img-fluid rounded" alt="" loading="lazy"/>
+        {% for g in groups %}
+          <div class="tab-pane" id="{{ g.name }}-tab-pane" role="tabpanel" aria-labelledby="{{ g.name }}-tab" tabindex="0">
+            <div class="row row-cols-1 row-cols-lg-2 g-3">
+              {% for r in g.items %}
+                <div class="col">
+                  <article class="card h-100">
+                    <h5 class="card-header">
+                      <a href="{{ r.html_url }}" target="_blank">{{ r.name }}</a>
+                    </h5>
+                    <div class="row g-0 h-100">
+                      <div class="col-4">
+                        <div class="node-cover text-center p-3">
+                          <a href="{{ r.html_url }}" target="_blank">
+                            <img src="https://raw.githubusercontent.com/{{ r.full_name }}/{{ r.default_branch }}/.github/logo.svg" class="img-fluid rounded" alt="" loading="lazy"/>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-8">
+                        <div class="card-body">
+                          <div class="node-body">
+                            <p class="card-text">{{ r.description }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                      <ul class="list-inline m-0">
+                        {% if r.homepage and r.homepage != '' %}
+                          <li class="list-inline-item">
+                            <a class="btn btn-light btn-sm text-muted" href="{{ r.homepage }}" target="_blank" role="button">
+                              <i class="fa-solid fa-link fa-fw"></i>
                             </a>
-                          </div>
-                        </div>
-                        <div class="col-8">
-                          <div class="card-body">
-                            <div class="node-body">
-                              <p class="card-text">{{ r.description }}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-footer text-muted">
-                        <ul class="list-inline m-0">
-                          {% if r.homepage and r.homepage != '' %}
-                            <li class="list-inline-item">
-                              <a class="btn btn-light btn-sm text-muted" href="{{ r.homepage }}" target="_blank" role="button">
-                                <i class="fa-solid fa-link fa-fw"></i>
-                              </a>
-                            </li>
-                          {% endif %}
-                          {% if r.license.key and r.license.key != '' and r.license.key != 'other' %}
-                            <li class="list-inline-item">
-                              <a class="btn btn-light btn-sm text-muted" href="https://choosealicense.com/licenses/{{ r.license.key }}/" target="_blank" role="button">
-                                <i class="fa-solid fa-copyright fa-fw me-1"></i>
-                                {{ r.license.spdx_id }}
-                              </a>
-                            </li>
-                          {% endif %}
-                          {% if r.watchers_count %}
-                            <li class="list-inline-item">
-                              <a class="btn btn-light btn-sm text-muted" href="{{ r.html_url }}/watchers" target="_blank" role="button">
-                                <i class="fa-solid fa-eye fa-fw me-1"></i>
-                                {{ r.watchers_count }}
-                              </a>
-                            </li>
-                          {% endif %}
-                          {% if r.stargazers_count %}
-                            <li class="list-inline-item">
-                              <a class="btn btn-light btn-sm text-muted" href="{{ r.html_url }}/stargazers" target="_blank" role="button">
-                                <i class="fa-solid fa-star fa-fw me-1"></i>
-                                {{ r.stargazers_count }}
-                              </a>
-                            </li>
-                          {% endif %}
-                          {% if r.forks_count %}
-                            <li class="list-inline-item">
-                              <a class="btn btn-light btn-sm text-muted" href="{{ r.html_url }}/network/members" target="_blank" role="button">
-                                <i class="fa-solid fa-code-fork fa-fw me-1"></i>
-                                {{ r.forks_count }}
-                              </a>
-                            </li>
-                          {% endif %}
-                        </ul>
-                      </div>
-                    </article>
-                  </div>
-                {% endfor %}
-              </div>
+                          </li>
+                        {% endif %}
+                        {% if r.license.key and r.license.key != '' and r.license.key != 'other' %}
+                          <li class="list-inline-item">
+                            <a class="btn btn-light btn-sm text-muted" href="https://choosealicense.com/licenses/{{ r.license.key }}/" target="_blank" role="button">
+                              <i class="fa-solid fa-copyright fa-fw me-1"></i>
+                              {{ r.license.spdx_id }}
+                            </a>
+                          </li>
+                        {% endif %}
+                        {% if r.watchers_count %}
+                          <li class="list-inline-item">
+                            <a class="btn btn-light btn-sm text-muted" href="{{ r.html_url }}/watchers" target="_blank" role="button">
+                              <i class="fa-solid fa-eye fa-fw me-1"></i>
+                              {{ r.watchers_count }}
+                            </a>
+                          </li>
+                        {% endif %}
+                        {% if r.stargazers_count %}
+                          <li class="list-inline-item">
+                            <a class="btn btn-light btn-sm text-muted" href="{{ r.html_url }}/stargazers" target="_blank" role="button">
+                              <i class="fa-solid fa-star fa-fw me-1"></i>
+                              {{ r.stargazers_count }}
+                            </a>
+                          </li>
+                        {% endif %}
+                        {% if r.forks_count %}
+                          <li class="list-inline-item">
+                            <a class="btn btn-light btn-sm text-muted" href="{{ r.html_url }}/network/members" target="_blank" role="button">
+                              <i class="fa-solid fa-code-fork fa-fw me-1"></i>
+                              {{ r.forks_count }}
+                            </a>
+                          </li>
+                        {% endif %}
+                      </ul>
+                    </div>
+                  </article>
+                </div>
+              {% endfor %}
             </div>
-          {% endfor %}
-        </div>
+          </div>
+        {% endfor %}
       </div>
     </div>
   </div>
-</main>
-
-<footer class="mt-auto">
-  <div class="section py-4 bg-light">
-    <div class="container">
-      <div class="row text-center text-muted small">
-        <div class="col-lg text-lg-start">
-          <ul class="list-inline mb-0">
-            <li class="list-inline-item">
-              <div>{{ owner }} &copy; {{ 'now' | date: "%Y" }}</div>
-              <div>{{ description }}</div>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg text-lg-end">
-          <ul class="list-inline mb-0">
-            <li class="list-inline-item">
-              <a title="{{ owner }}" href="{{ blog }}" target="_blank" rel="noopener nofollow"><i class="fas fa-globe fa-fw"></i></a>
-            </li>
-            <li class="list-inline-item">&bull;</li>
-            <li class="list-inline-item">
-              <a title="{{ email }}" href="mailto:{{ email }}"><i class="far fa-envelope fa-fw"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+</div>
