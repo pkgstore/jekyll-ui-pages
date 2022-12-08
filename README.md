@@ -1,2 +1,2 @@
-# Jekyll UI Catalog
+# Jekyll UI Store
 

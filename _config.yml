@@ -4,7 +4,7 @@ author:
   email: ""
 description: ""
 
-theme: ui-catalog
+theme: ui-store
 
 sass:
   style: compressed
