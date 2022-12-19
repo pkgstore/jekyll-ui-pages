@@ -54,7 +54,7 @@ layout: compress
   </nav>
 </header>
 <main class="flex-shrink-0">{{ content }}</main>
-<footer class="mt-auto">
+<footer class="mt-auto bg-light text-muted">
   <div class="section py-4 bg-light">
     <div class="container">
       <div class="row text-center small align-items-center">
@@ -69,11 +69,12 @@ layout: compress
         <div class="col-lg text-lg-end">
           <ul class="list-inline mb-0">
             <li class="list-inline-item">
-              <a title="{{ owner }}" href="{{ blog }}" target="_blank" rel="noopener nofollow"><i class="fas fa-globe fa-fw"></i></a>
+              <a title="{{ owner }}" class="btn btn-sm" href="{{ blog }}" target="_blank" rel="noopener nofollow"><i class="fas fa-globe fa-fw"></i></a>
             </li>
             <li class="list-inline-item">&bull;</li>
             <li class="list-inline-item">
-              <a title="{{ email }}" href="mailto:{{ email }}"><i class="far fa-envelope fa-fw"></i></a></li>
+              <a title="{{ email }}" class="btn btn-sm" href="mailto:{{ email }}"><i class="far fa-envelope fa-fw"></i></a>
+            </li>
           </ul>
         </div>
       </div>
