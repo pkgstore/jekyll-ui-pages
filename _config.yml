@@ -1,15 +1,16 @@
-title: ""
+title: 'Your awesome title'
 author:
-  name: ""
-  email: ""
-description: ""
+  name: 'GitHub User'
+  email: 'mail@example.com'
+description: 'Write an awesome description for your new site here.'
 
-theme: ui-pages
+theme: 'ui-pages'
 
 sass:
   style: compressed
 
 plugins:
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jemoji
+  - 'jekyll-github-metadata'
+  - 'jekyll-seo-tag'
+  - 'jekyll-sitemap'
+  - 'jemoji'
